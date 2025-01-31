@@ -2,7 +2,10 @@
 
 A React application for building your ultimate bot army by enlisting, managing, and discharging robotic warriors.
 
-![Bot Battlr Preview](https://example.com/screenshot.jpg) 
+![Bot Battlr Preview](https://bot-battlr-sepia.vercel.app/) 
+
+Deployed:
+https://bot-battlr-sepia.vercel.app/
 
 ## Table of Contents
 - [Features](#features)
