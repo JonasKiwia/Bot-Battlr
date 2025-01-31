@@ -7,37 +7,43 @@ function App() {
   const [bots, setBots] = useState([]);
   const [army, setArmy] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [loadingCountdown, setLoadingCountdown] = useState(5); // Countdown timer
 
-  // Fetch bots data from API on component mount
   useEffect(() => {
+    // Countdown effect
+    const countdownInterval = setInterval(() => {
+      setLoadingCountdown((prev) => (prev > 0 ? prev - 1 : 0));
+    }, 1000);
+
     const fetchBots = async () => {
       try {
         const response = await fetch('https://bots-si0g.onrender.com/bots');
         const data = await response.json();
         setBots(data);
         setIsLoading(false);
+        clearInterval(countdownInterval); // Stop countdown when data loads
       } catch (error) {
         console.error('Error fetching bots:', error);
         setIsLoading(false);
+        clearInterval(countdownInterval);
       }
     };
-    
+
     fetchBots();
+
+    return () => clearInterval(countdownInterval); // Cleanup on unmount
   }, []);
 
-  // Add bot to army if not already enlisted
   const enlistBot = (bot) => {
     if (!army.some(b => b.id === bot.id)) {
       setArmy([...army, bot]);
     }
   };
 
-  // Remove bot from army
   const releaseBot = (botId) => {
     setArmy(army.filter(bot => bot.id !== botId));
   };
 
-  // Permanently delete bot from backend and army
   const dischargeBot = async (botId) => {
     try {
       await fetch(`https://bots-si0g.onrender.com/bots/${botId}`, {
@@ -64,7 +70,11 @@ function App() {
       />
 
       {isLoading ? (
-        <div className="loading-spinner" />
+        <div className="loading-container">
+          <p>Loading bots... {loadingCountdown > 0 ? `${loadingCountdown}s remaining` : 'Almost there!'}</p>
+          <p>This might take a while!</p>
+          <div className="loading-spinner" />
+        </div>
       ) : (
         <BotCollection 
           bots={bots} 
