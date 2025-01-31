@@ -38,5 +38,5 @@ A React application for building your ultimate bot army by enlisting, managing, 
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/kibali-cell/bot-battlr.git
+   git clone https://github.com/JonasKiwia/bot-battlr.git
    cd bot-battlr

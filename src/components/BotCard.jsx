@@ -1,4 +1,3 @@
-// components/BotCard.js
 const BotCard = ({ bot, onEnlist }) => {
   // Format stats to match design pattern: VALUE/MODIFIERU[RANDOM]
   const formatStat = (value) => {

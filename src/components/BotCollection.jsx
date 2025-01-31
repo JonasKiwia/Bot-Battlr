@@ -1,4 +1,3 @@
-// components/BotCollection.js
 import BotCard from './BotCard';
 
 const BotCollection = ({ bots, onEnlist }) => {
