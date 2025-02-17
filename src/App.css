@@ -181,7 +181,7 @@ body {
   background: #ff006e;
   color: white;
   border: none;
-  border-radius: 50%;
+  border-radius: 100%;
   width: 25px;
   height: 25px;
   cursor: pointer;

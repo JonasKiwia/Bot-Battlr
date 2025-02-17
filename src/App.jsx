@@ -72,7 +72,7 @@ function App() {
       {isLoading ? (
         <div className="loading-container">
           <p>Loading bots... {loadingCountdown > 0 ? `${loadingCountdown}s remaining` : 'Almost there!'}</p>
-          <p>This might take a while!</p>
+          <p>This might take a while · Please Reload for Quicker Action!</p> 
           <div className="loading-spinner" />
         </div>
       ) : (
